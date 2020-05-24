@@ -119,6 +119,8 @@ html, body {
 /* Order List */
 .order-list-wrapper {
     background-color: black;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .order-list {
@@ -138,7 +140,7 @@ html, body {
 }
 
 .order-number {
-    position: absolute;
+    position: sticky;
     width: 20px;
     height: 20px;
     background-color: grey;
@@ -199,6 +201,7 @@ html, body {
     align-items: center;
     justify-content: center;
     background-color: rgb(24, 24, 24);
+    z-index: 1;
 }
 
 .add-order-button {
@@ -209,11 +212,20 @@ html, body {
     width: 90px;
     height: 50px;
     border-radius: 30px;
-    font-size: xx-large;
+    font-size: 36px;
+}
+
+.add-order-button:focus {
+    outline: none;
+    background-color: rgb(10, 10, 78);
+    outline: none;
+    border: 1px solid white;
+    font-size: 40px;
 }
 
 /* New Order Modal */
-.new-order {
+
+#new-order {
     position: absolute;
     left: 0;
     top: 0;
@@ -227,13 +239,17 @@ html, body {
     align-items: center;
 }
 
+#new-order {
+    display: none;
+}
+
 .new-order-menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.3fr 1fr;
+    grid-template-rows: 2fr 1.5fr 1fr;
     background-color: rgb(32, 32, 32);
     width: 90%;
-    height: 38vh;
+    height: 45vh;
     border-radius: 10px;
 }
 
@@ -263,8 +279,51 @@ html, body {
     padding-left: 3.5px;
 }
 
-/* .name-input {
-    font-size: 26px;
-    padding-left: 3.5px;
-} */
+.confirm-button-wrapper {
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-button-wrapper > button {
+    justify-self: center;
+}
+
+.confirm {
+    background-color: rgb(43, 43, 177);
+    border: none;
+    height: 36px;
+    width: 90px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.confirm:hover, .confirm:focus {
+    background-color: rgb(10, 10, 78);
+    outline: none;
+    border: 1px solid white;
+    font-size: 21px;
+}
+
+.cancel {
+    background-color: rgb(43, 43, 177);
+    border: none;
+    height: 36px;
+    width: 90px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.cancel:hover, .cancel:focus {
+    background-color: rgb(10, 10, 78);
+    outline: none;
+    border: 1px solid white;
+    font-size: 21px;
+}
 

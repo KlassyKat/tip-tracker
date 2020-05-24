@@ -7,3 +7,13 @@ if('serviceWorker' in navigator) {
             console.log("Service Worker not registered.", err)
         })
 }
+
+let newOrder = document.getElementById('new-order');
+
+function showNewOrder() {
+    newOrder.style.display = 'flex'
+}
+
+function hideNewOrder() {
+    newOrder.style.display = 'none'
+}

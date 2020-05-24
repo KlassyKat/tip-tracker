@@ -62,16 +62,43 @@
                         <span class="tip-detail">Tip: <strong>$41.44</strong></span>
                     </div>
                 </li>
+                <li class="order">
+                    <span class="order-number">33</span>
+                    <h2 class="order-name">Osborn</h2>
+                    <div class="order-details">
+                        <span class="order-detail">Order: <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                    </div>
+                </li>
+                <li class="order">
+                    <span class="order-number">33</span>
+                    <h2 class="order-name">Osborn</h2>
+                    <div class="order-details">
+                        <span class="order-detail">Order: <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                    </div>
+                </li>
+                <li class="order">
+                    <span class="order-number">33</span>
+                    <h2 class="order-name">Osborn</h2>
+                    <div class="order-details">
+                        <span class="order-detail">Order: <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                    </div>
+                </li>
             </ul>
         </div>
 
         <div class="add-order-button-wrapper">
-            <button class="add-order-button">+</button>
+            <button onclick="showNewOrder()" class="add-order-button">+</button>
         </div>
     </div>
 
-    <div class="new-order">
-        <div class="new-order-menu">
+    <div id="new-order">
+    <div class="new-order-menu">
             <div class="name-input-wrapper">
                 <label for="name-input">Name:</label>
                 <input type="text" class="name-input" name="name-input">
@@ -84,9 +111,10 @@
                 <label for="recieved-input">Recieved:</label>
                 <input type="number" class="recieved-input" name="recieved-input">
             </div>
-            <div class="confirm-button-wrapper">
+            <section class="confirm-button-wrapper">
                 <button class="confirm">ADD</button>
-            </div>
+                <button onclick="hideNewOrder()" class="cancel">Cancel</button>
+            </section>
         </div>
 
     </div>
