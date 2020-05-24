@@ -20,7 +20,10 @@ html, body {
 
 .container {
     width: 100%;
+    height: 100vh;
     overflow-x: hidden;
+    display: grid;
+    grid-template-rows: auto auto 50% 1fr;
 }
 
 .top-bar {
@@ -114,6 +117,10 @@ html, body {
 }
 
 /* Order List */
+.order-list-wrapper {
+    background-color: black;
+}
+
 .order-list {
     list-style-type: none;
     padding: 0;
@@ -186,3 +193,78 @@ html, body {
 .tip-detail > strong{
     color: var(--green-text);
 }
+
+.add-order-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(24, 24, 24);
+}
+
+.add-order-button {
+    border: none;
+    color: white;
+    font-weight: 600;
+    background-color: blue;
+    width: 90px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: xx-large;
+}
+
+/* New Order Modal */
+.new-order {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(24, 24, 24, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-order-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.3fr 1fr;
+    background-color: rgb(32, 32, 32);
+    width: 90%;
+    height: 38vh;
+    border-radius: 10px;
+}
+
+.new-order-menu > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.new-order-menu > div * {
+    width: 85%;
+}
+
+.name-input-wrapper {
+    grid-column: 1/3;
+}
+
+.new-order-menu label {
+    padding: 3px;
+    color: white;
+}
+.new-order-menu input {
+    height: 38px;
+    font-size: 26px;
+    padding-left: 3.5px;
+}
+
+/* .name-input {
+    font-size: 26px;
+    padding-left: 3.5px;
+} */
+
