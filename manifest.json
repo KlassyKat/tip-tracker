@@ -1,0 +1,21 @@
+{
+    "name": "Tip Tracker",
+    "short_name": "Tip Tracker",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#007ACC",
+    "theme_color": "#007ABB",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/logo512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/logo192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ]
+}
