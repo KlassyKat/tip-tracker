@@ -58,7 +58,7 @@ html, body {
     gap: 5px;
     padding: 5px;
     background-color: rgb(70, 137, 224);
-    box-shadow: 0px 8px 3px rgba(0, 0, 0, 0.301);
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.301);
     z-index: 2;
 }
 
@@ -203,6 +203,7 @@ html, body {
     justify-content: center;
     background-color: rgb(24, 24, 24);
     z-index: 1;
+    box-shadow: 0px -8px 10px rgba(0, 0, 0, 0.301);
 }
 
 .add-order-button {
@@ -345,7 +346,7 @@ html, body {
     display: none;
 }
 
-.hamburger-menu {
+#hamburger-menu {
     position: absolute;
     width: 70%;
     max-width: 400px;
@@ -354,25 +355,14 @@ html, body {
     color: white;
 }
 
-.hamburger-top-bar {
-    display: flex;
-}
-
-.hamburger-menu h2 {
-    color: white;
-    font-weight: 500;
-    font-size: 32px;
-    padding: 5px;
-}
-
-.hide-button {
+#hamburger-menu h2 {
     display: flex;
     align-items: center;
-    margin-left: auto;
-}
-
-.hide-button > svg {
-    height: 40px;
+    color: white;
+    font-weight: 500;
+    height: 10vh;
+    font-size: 32px;
+    padding-left: 5px;
 }
 
 .sessions-list {
