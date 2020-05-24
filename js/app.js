@@ -9,6 +9,7 @@ if('serviceWorker' in navigator) {
 }
 
 let newOrder = document.getElementById('new-order');
+let hamburgerMenu = document.getElementById('hamburger-menu-container');
 
 function showNewOrder() {
     newOrder.style.display = 'flex'
@@ -16,4 +17,12 @@ function showNewOrder() {
 
 function hideNewOrder() {
     newOrder.style.display = 'none'
+}
+
+function showHamburgerMenu() {
+    hamburgerMenu.style.display = 'flex'
+}
+
+function hideHamburgerMenu() {
+    hamburgerMenu.style.display = 'none'
 }

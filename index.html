@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <nav class="top-bar">
-            <svg height="20" width="20" viewBox="0 0 20 20"
+            <svg onclick="showHamburgerMenu()" height="20" width="20" viewBox="0 0 20 20"
                 style="stroke: #000; stroke-width: 2.6; stroke-linecap: round">
                 <line x1="2" y1="4" x2="18" y2="4" />
                 <line x1="2" y1="10" x2="18" y2="10" />
@@ -98,7 +98,7 @@
     </div>
 
     <div id="new-order">
-    <div class="new-order-menu">
+        <div class="new-order-menu">
             <div class="name-input-wrapper">
                 <label for="name-input">Name:</label>
                 <input type="text" class="name-input" name="name-input">
@@ -117,6 +117,28 @@
             </section>
         </div>
 
+    </div>
+
+    <div id="hamburger-menu-container">
+        <div class="hamburger-menu">
+            <section class="hamburger-top-bar">
+                <h2>Sessions</h2>
+                <span class="hide-button">
+                    <svg viewBox="0 0 60 60" style="stroke: #fff; stroke-width: 5; stroke-linecap: round">
+                        <line x1="8" y1="30" x2="42" y2="8"/>                  
+                        <line x1="8" y1="30" x2="42" y2="52"/>                  
+                    </svg>
+                </span>
+            </section>
+            <ul class="sessions-list">
+                <li class="session">
+                    Tuesday
+                </li>
+                <li class="session">
+                    Wednesday
+                </li>
+            </ul>
+        </div>
     </div>
 
 </body>

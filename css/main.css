@@ -5,6 +5,7 @@
     --green-text: rgb(110, 222, 153);
     --red-text: rgb(243, 81, 73);
     --blue-text: rgb(112, 210, 235);
+    --diggin-this: #0b51a2;
 }
 
 html * {
@@ -327,3 +328,62 @@ html, body {
     font-size: 21px;
 }
 
+/* Hamburger Menu */
+#hamburger-menu-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(24, 24, 24, 0.9);
+    display: flex;
+    flex-direction: column;
+}
+
+#hamburger-menu-container {
+    display: none;
+}
+
+.hamburger-menu {
+    position: absolute;
+    width: 70%;
+    max-width: 400px;
+    background-color: rgb(32, 32, 112);
+    height: 100vh;
+    color: white;
+}
+
+.hamburger-top-bar {
+    display: flex;
+}
+
+.hamburger-menu h2 {
+    color: white;
+    font-weight: 500;
+    font-size: 32px;
+    padding: 5px;
+}
+
+.hide-button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.hide-button > svg {
+    height: 40px;
+}
+
+.sessions-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.session {
+    background-color: rgb(30, 82, 180);
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 3px;
+}
