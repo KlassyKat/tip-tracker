@@ -15,58 +15,61 @@
 </head>
 
 <body>
-    <!-- Add side menu -->
-    <nav class="top-bar">
-        <svg height="20" width="20" viewBox="0 0 20 20" style="stroke: #000; stroke-width: 2.6; stroke-linecap: round">
-            <line x1="2" y1="4" x2="18" y2="4" />
-            <line x1="2" y1="10" x2="18" y2="10" />
-            <line x1="2" y1="16" x2="18" y2="16" />
-        </svg>
-        <h4 class="title">Tip Tracker</h4>
-    </nav>
     <div class="container">
-        <div class="status-wrapper">
-            <div class="total-tips">
-                <h3>Total Tips</h3>
-                <h1>$888.88</h1>
+        <nav class="top-bar">
+            <svg height="20" width="20" viewBox="0 0 20 20"
+                style="stroke: #000; stroke-width: 2.6; stroke-linecap: round">
+                <line x1="2" y1="4" x2="18" y2="4" />
+                <line x1="2" y1="10" x2="18" y2="10" />
+                <line x1="2" y1="16" x2="18" y2="16" />
+            </svg>
+            <h4 class="title">Tip Tracker</h4>
+        </nav>
+        <div class="status-container">
+            <div class="status-wrapper">
+                <div class="total-tips">
+                    <h3>Total Tips</h3>
+                    <h1>$888.88</h1>
+                </div>
+                <div class="total-orders">
+                    <h5>Total Orders</h5>
+                    <h1>$250.00</h1>
+                </div>
+                <div class="total-recieved">
+                    <h5>Total Recieved</h5>
+                    <h1>$324.53</h1>
+                </div>
             </div>
-            <div class="total-orders">
-                <h5>Total Orders</h5>
-                <h1>$250.00</h1>
-            </div>
-            <div class="total-recieved">
-                <h5>Total Recieved</h5>
-                <h1>$324.53</h1>
-            </div>
+        </div>
+
+        <div class="order-list-wrapper">
+            <ul class="order-list">
+                <li class="order">
+                    <span class="order-number">1</span>
+                    <h2 class="order-name">Osborn</h2>
+                    <div class="order-details">
+                        <span class="order-detail">Order: <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                    </div>
+                </li>
+                <li class="order">
+                    <span class="order-number">33</span>
+                    <h2 class="order-name">Osborn</h2>
+                    <div class="order-details">
+                        <span class="order-detail">Order: <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="add-order-button-wrapper">
+            <button class="add-order-button">+</button>
         </div>
     </div>
 
-    <div class="order-list-wrapper">
-        <ul class="order-list">
-            <li class="order">
-                <span class="order-number">1</span>
-                <h2 class="order-name">Osborn</h2>
-                <div class="order-details">
-                    <span class="order-detail">Order: <strong>$41.44</strong></span>
-                    <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                    <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                </div>
-            </li>
-            <li class="order">
-                <span class="order-number">33</span>
-                <h2 class="order-name">Osborn</h2>
-                <div class="order-details">
-                    <span class="order-detail">Order: <strong>$41.44</strong></span>
-                    <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                    <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="add-order-button-wrapper">
-        <button class="add-order-button">+</button>
-    </div>
 </body>
 <script src="/js/app.js"></script>
 

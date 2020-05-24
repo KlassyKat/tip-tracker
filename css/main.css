@@ -18,6 +18,11 @@ html, body {
     background-color: var(--background-color);
 }
 
+.container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .top-bar {
     display: flex;
     align-items: center;
@@ -34,7 +39,7 @@ html, body {
 .title {
     margin: 0;
 }
-.container {
+.status-container {
     width: 100%;
     display: flex;
 }
