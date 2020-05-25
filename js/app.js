@@ -1,4 +1,4 @@
-if('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
         .then((res) => {
             console.log("Service Worker registered.", res)
@@ -11,8 +11,22 @@ if('serviceWorker' in navigator) {
 // Storage
 let storage = JSON.parse(localStorage.getItem('storage')) || {};
 localStorage.setItem('storage', JSON.stringify(storage));
-let lastSession = Object.keys(storage)[0];
+let lastSession = Object.keys(storage).slice(-1);
 let activeSession = lastSession;
+
+let sessionList = document.getElementById('sessions-list');
+let sessionTile = document.getElementById("session-placeholder");
+let orderList = document.getElementById("order-list");
+let orderTile = document.getElementById('placeholder');
+
+
+//Load Data
+for (session in storage) {
+    // session = storage[session];
+    createSessionTile(session);
+}
+
+setActiveTile();
 
 
 //UI Stuff
@@ -52,7 +66,9 @@ function hideHamburgerMenu() {
 function addNewSession() {
     storage = JSON.parse(localStorage.getItem('storage'));
     let sessionKey = 'session' + (Object.keys(storage).length + 1);
+    let timestampVal = makeTimestamp();
     storage[sessionKey] = {
+        timestamp: timestampVal,
         totalTips: 0.00,
         totalOrders: 0.00,
         totalRecieved: 0.00,
@@ -60,25 +76,52 @@ function addNewSession() {
     };
     localStorage.setItem('storage', JSON.stringify(storage));
     createSessionTile(sessionKey);
+    activeSession = Object.keys(storage).slice(-1);
+    setActiveTile();
 }
 
-let sessionTile = document.getElementById("session-placeholder");
 function createSessionTile(id) {
     let newSession = sessionTile.cloneNode(true);
     newSession.id = id;
-    let d = new Date();
-    let hours = d.getHours() <= 12 ? d.getHours() : d.getHours() - 12;
-    let minutes = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
-    newSession.children[0].innerHTML = d.getMonth() + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + hours + ':' + minutes;
+    newSession.children[0].innerHTML = storage[id].timestamp;
+    newSession.children[1].children[1].innerHTML = makeMoney(storage[id].totalOrders);
+    newSession.children[1].children[3].innerHTML = makeMoney(storage[id].totalRecieved);
+    newSession.children[1].children[5].innerHTML = makeMoney(storage[id].totalTips);
     sessionTile.parentElement.children[0].after(newSession);
+    selectActiveSession();
+}
+
+function setActiveTile() {
+    for (child of sessionList.children) {
+        if (child.id == activeSession) {
+            child.style.backgroundColor = '#009e91';
+        } else {
+            child.style.backgroundColor = "#1E52B4"
+        }
+    }
+    loadOrders();
+}
+
+selectActiveSession()
+
+function selectActiveSession() {
+    let sessions = document.querySelectorAll('.session');
+    for (session of sessions) {
+        if (session.id != 'add-new-session') {
+            session.addEventListener('click', e => {
+                activeSession = e.currentTarget.id;
+                setActiveTile();
+            })
+        }
+    }
 }
 
 
 // New Orders
-let orderTile = document.getElementById('placeholder');
 let nameInput = document.getElementById('name-input');
 let orderInput = document.getElementById('order-input');
 let recievedInput = document.getElementById('recieved-input');
+
 function addNewOrder() {
     storage = JSON.parse(localStorage.getItem('storage'));
     let orderName = nameInput.value;
@@ -98,4 +141,52 @@ function addNewOrder() {
     nameInput.value = null;
     orderInput.value = null;
     recievedInput.value = null;
+    createOrderTile(orderKey);
+}
+
+function createOrderTile(id) {
+    let newTile = orderTile.cloneNode(true);
+    newTile.id = id;
+    newTile.children[0].innerHTML = id.substring(5);
+    newTile.children[1].innerHTML = storage[activeSession].orders[id].orderName;
+    newTile.children[2].children[0].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].orderPrice);
+    newTile.children[2].children[1].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].orderRecieved);
+    newTile.children[2].children[2].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].tip);
+    orderList.lastChild.after(newTile);
+}
+
+function loadOrders() {
+    clearOrders();
+    if(activeSession.length > 0) {
+        for (order in storage[activeSession].orders) {
+            createOrderTile(order);
+        }
+    }
+}
+
+function clearOrders() {
+    for (child of orderList.children) {
+        if (child.id != 'placeholder') {
+            orderList.removeChild(child);
+        }
+    }
+}
+
+// Formatting
+function makeTimestamp() {
+    let d = new Date();
+    let month = d.getMonth() + 1;
+    let date = d.getDate();
+    let year = d.getFullYear();
+    let hours = d.getHours() == 0 ? 12 : d.getHours() < 12 ? d.getHours() : d.getHours() - 12;
+    let minutes = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+    let timestamp = month + '/' + date + '/' + year + ' ' + hours + ':' + minutes;
+    return timestamp;
+}
+
+
+function makeMoney(val) {
+    val = Number.parseFloat(val).toFixed(2);
+    val = "$" + val;
+    return val
 }
