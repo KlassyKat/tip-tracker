@@ -48,45 +48,9 @@
                     <span class="order-number">1</span>
                     <h2 class="order-name">Osborn</h2>
                     <div class="order-details">
-                        <span class="order-detail">Order: <strong>$41.44</strong></span>
-                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                    </div>
-                </li>
-                <li class="order">
-                    <span class="order-number">33</span>
-                    <h2 class="order-name">Osborn</h2>
-                    <div class="order-details">
-                        <span class="order-detail">Order: <strong>$41.44</strong></span>
-                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                    </div>
-                </li>
-                <li class="order">
-                    <span class="order-number">33</span>
-                    <h2 class="order-name">Osborn</h2>
-                    <div class="order-details">
-                        <span class="order-detail">Order: <strong>$41.44</strong></span>
-                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                    </div>
-                </li>
-                <li class="order">
-                    <span class="order-number">33</span>
-                    <h2 class="order-name">Osborn</h2>
-                    <div class="order-details">
-                        <span class="order-detail">Order: <strong>$41.44</strong></span>
-                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
-                    </div>
-                </li>
-                <li class="order">
-                    <span class="order-number">33</span>
-                    <h2 class="order-name">Osborn</h2>
-                    <div class="order-details">
-                        <span class="order-detail">Order: <strong>$41.44</strong></span>
-                        <span class="recieved-detail">Recieved: <strong>$41.44</strong></span>
-                        <span class="tip-detail">Tip: <strong>$41.44</strong></span>
+                        <span class="order-detail">Order <strong>$41.44</strong></span>
+                        <span class="recieved-detail">Recieved <strong>$41.44</strong></span>
+                        <span class="tip-detail">Tip <strong>$41.44</strong></span>
                     </div>
                 </li>
             </ul>
@@ -101,18 +65,18 @@
         <div class="new-order-menu">
             <div class="name-input-wrapper">
                 <label for="name-input">Name:</label>
-                <input type="text" class="name-input" name="name-input">
+                <input type="text" id="name-input" name="name-input">
             </div>
             <div class="order-input-wrapper">
                 <label for="order-input">Order:</label>
-                <input type="number" class="order-input" name="order-input">
+                <input type="number" id="order-input" name="order-input">
             </div>
             <div class="recieved-input-wrapper">
                 <label for="recieved-input">Recieved:</label>
-                <input type="number" class="recieved-input" name="recieved-input">
+                <input type="number" id="recieved-input" name="recieved-input">
             </div>
             <section class="confirm-button-wrapper">
-                <button class="confirm">ADD</button>
+                <button onclick="addNewOrder()" class="confirm">ADD</button>
                 <button onclick="hideNewOrder()" class="cancel">Cancel</button>
             </section>
         </div>
@@ -122,30 +86,25 @@
     <div id="hamburger-menu-container">
         <div id="hamburger-menu">
             <h2>Sessions</h2>
-
-                <ul class="sessions-list">
-                    <li class="session">
-                        Tuesday
-                    </li>
-                    <li class="session">
-                        Wednesday
-                    </li>
-                    <li class="session">
-                        Wednesday
-                    </li>
-                    <li class="session">
-                        Wednesday
-                    </li>
-                    <li class="session">
-                        Wednesday
-                    </li>
-                    <li class="session">
-                        Wednesday
-                    </li>
-                </ul>
+            <ul class="sessions-list">
+                <li onclick="addNewSession()" id="add-new-session" class="session">
+                    +
+                </li>
+                <li id="session-placeholder" class="session">
+                    <!-- <h4 class="timestamp">05/24/2020 8:45PM</h4> -->
+                    <h4 class="timestamp">MM/DD/YYYY HH:MM</h4>
+                    <div class="session-details">
+                        <span class="session-detail">Order: </span>
+                        <strong class="session-order-val">$0.00</strong>
+                        <span class="session-detail">Recieved: </span>
+                        <strong class="session-recieved-val">$0.00</strong>
+                        <span class="session-detail">Tip: </span>
+                        <strong class="session-tip-val">$0.00</strong>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-
 </body>
 <script src="/js/app.js"></script>
 
