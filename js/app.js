@@ -69,9 +69,6 @@ function addNewSession() {
     let timestampVal = makeTimestamp();
     storage[sessionKey] = {
         timestamp: timestampVal,
-        totalTips: 0.00,
-        totalOrders: 0.00,
-        totalRecieved: 0.00,
         orders: {}
     };
     localStorage.setItem('storage', JSON.stringify(storage));
@@ -84,9 +81,6 @@ function createSessionTile(id) {
     let newSession = sessionTile.cloneNode(true);
     newSession.id = id;
     newSession.children[0].innerHTML = storage[id].timestamp;
-    newSession.children[1].children[1].innerHTML = makeMoney(storage[id].totalOrders);
-    newSession.children[1].children[3].innerHTML = makeMoney(storage[id].totalRecieved);
-    newSession.children[1].children[5].innerHTML = makeMoney(storage[id].totalTips);
     sessionTile.parentElement.children[0].after(newSession);
     selectActiveSession();
 }
@@ -98,8 +92,8 @@ function setActiveTile() {
         } else {
             child.style.backgroundColor = "#1E52B4"
         }
+        clearOrders();
     }
-    clearOrders();
 }
 
 selectActiveSession();
@@ -116,6 +110,7 @@ function selectActiveSession() {
             })
         }
     }
+    updateTrackingPannel();
 }
 
 
@@ -160,7 +155,7 @@ function createOrderTile(id) {
 
 function loadOrders() {
     clearOrders();
-    if(activeSession.length > 0) {
+    if (activeSession.length > 0) {
         for (order in storage[activeSession].orders) {
             createOrderTile(order);
         }
@@ -181,16 +176,20 @@ function updateTrackingPannel() {
     let tipTracker = document.getElementById('tip-tracker');
     let totalTracker = document.getElementById('total-tracker');
     let recievedTracker = document.getElementById('recieved-tracker');
+    let sessionInfoTile = document.getElementById(activeSession);
     let totalTips = 0;
     let totalOrders = 0;
     let totalRecieved = 0;
-    if (activeOrders != {}) {
-        for(order in activeOrders) {
-            order = activeOrders[order];
-            totalTips += order.tip;
-            totalOrders += order.orderPrice;
-            totalRecieved += order.orderRecieved;
-        }
+    for (order in activeOrders) {
+        order = activeOrders[order];
+        totalTips += order.tip;
+        totalOrders += order.orderPrice;
+        totalRecieved += order.orderRecieved;
+    }
+    if (sessionInfoTile) {
+        sessionInfoTile.children[1].children[1].innerHTML = makeMoney(totalOrders);
+        sessionInfoTile.children[1].children[3].innerHTML = makeMoney(totalRecieved);
+        sessionInfoTile.children[1].children[5].innerHTML = makeMoney(totalTips);
     }
     tipTracker.innerHTML = makeMoney(totalTips);
     totalTracker.innerHTML = makeMoney(totalOrders);
