@@ -185,6 +185,7 @@ function addCloseEvent() {
             localStorage.setItem('storage', JSON.stringify(storage));
             clearOrders();
             loadOrders();
+            updateTrackingPannel();
         })
     }
 }
