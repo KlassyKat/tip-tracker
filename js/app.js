@@ -9,7 +9,12 @@ if ('serviceWorker' in navigator) {
 }
 
 // Storage
-let storage = JSON.parse(localStorage.getItem('storage')) || {};
+let storage = JSON.parse(localStorage.getItem('storage')) || {
+    session1: {
+        timestamp: makeTimestamp(),
+        orders: {}
+    }
+};
 localStorage.setItem('storage', JSON.stringify(storage));
 let lastSession = Object.keys(storage).slice(-1);
 let activeSession = lastSession;
@@ -18,7 +23,6 @@ let sessionList = document.getElementById('sessions-list');
 let sessionTile = document.getElementById("session-placeholder");
 let orderList = document.getElementById("order-list");
 let orderTile = document.getElementById('placeholder');
-
 
 //Load Data
 for (session in storage) {
@@ -75,6 +79,7 @@ function addNewSession() {
     createSessionTile(sessionKey);
     activeSession = Object.keys(storage).slice(-1);
     setActiveTile();
+    updateTrackingPannel();
 }
 
 function createSessionTile(id) {
@@ -152,7 +157,7 @@ function createOrderTile(id) {
     newTile.children[2].children[2].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].tip);
     orderList.lastChild.after(newTile);
 }
-
+loadOrders();
 function loadOrders() {
     clearOrders();
     if (activeSession.length > 0) {

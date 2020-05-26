@@ -51,7 +51,6 @@ html, body {
 .status-wrapper {
     display: grid;
     min-height: 16vh;
-    /* max-height: 28vh; */
     width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
@@ -233,7 +232,6 @@ html, body {
 }
 
 /* New Order Modal */
-
 #new-order {
     position: absolute;
     left: 0;
@@ -256,10 +254,16 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 1.5fr 1fr;
-    background-color: rgb(32, 32, 32);
-    width: 90%;
+    background-color: rgb(10, 43, 58);
+    width: 92%;
     height: 45vh;
     border-radius: 10px;
+}
+
+@media screen and (max-height: 400px) {
+    .new-order-menu {
+        height: 80vh;
+    }
 }
 
 .new-order-menu > div {
@@ -286,6 +290,15 @@ html, body {
     height: 38px;
     font-size: 26px;
     padding-left: 3.5px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.new-order-menu input:focus {
+    outline: none;
+    border: 2px solid rgb(79, 106, 223);
 }
 
 .confirm-button-wrapper {
@@ -294,6 +307,7 @@ html, body {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .confirm-button-wrapper > button {
@@ -301,7 +315,7 @@ html, body {
 }
 
 .confirm {
-    background-color: rgb(43, 43, 177);
+    background-color: rgb(70, 70, 170);
     border: none;
     height: 36px;
     width: 90px;
@@ -319,7 +333,7 @@ html, body {
 }
 
 .cancel {
-    background-color: rgb(43, 43, 177);
+    background-color: rgb(70, 70, 170);
     border: none;
     height: 36px;
     width: 90px;
