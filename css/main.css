@@ -140,7 +140,6 @@ html, body {
 }
 
 .order-number {
-    position: sticky;
     width: 20px;
     height: 20px;
     background-color: grey;
@@ -397,7 +396,7 @@ html, body {
 .session {
     background-color: rgb(30, 82, 180);
     width: 100%;
-    height: 16vh;
+    height: auto;
     margin-bottom: 3px;
 }
 
@@ -410,6 +409,7 @@ html, body {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto auto;
     padding-left: 16px;
+    padding-bottom: 5px;
 }
 
 .timestamp {
@@ -445,6 +445,7 @@ html, body {
     justify-content: center;
     align-items: center;
     font-size: 36px;
+    height: 15vh;
 }
 
 #session-placeholder {

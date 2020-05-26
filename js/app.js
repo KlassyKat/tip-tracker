@@ -156,7 +156,9 @@ function createOrderTile(id) {
     newTile.children[2].children[1].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].orderRecieved);
     newTile.children[2].children[2].children[0].innerHTML = makeMoney(storage[activeSession].orders[id].tip);
     orderList.lastChild.after(newTile);
+    addCloseEvent();
 }
+
 loadOrders();
 function loadOrders() {
     clearOrders();
@@ -165,6 +167,7 @@ function loadOrders() {
             createOrderTile(order);
         }
     }
+    addCloseEvent();
 }
 
 function clearOrders() {
@@ -172,6 +175,18 @@ function clearOrders() {
         if (child.id != 'placeholder') {
             orderList.removeChild(child);
         }
+    }
+}
+addCloseEvent();
+function addCloseEvent() {
+    for(child of orderList.children) {
+        console.log('delete added')
+        child.addEventListener('contextmenu', e => {
+            delete storage[activeSession].orders[e.currentTarget.id]
+            localStorage.setItem('storage', JSON.stringify(storage));
+            clearOrders();
+            loadOrders();
+        })
     }
 }
 
