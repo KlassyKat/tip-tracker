@@ -180,7 +180,6 @@ function clearOrders() {
 addCloseEvent();
 function addCloseEvent() {
     for(child of orderList.children) {
-        console.log('delete added')
         child.addEventListener('contextmenu', e => {
             delete storage[activeSession].orders[e.currentTarget.id]
             localStorage.setItem('storage', JSON.stringify(storage));
