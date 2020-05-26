@@ -99,10 +99,10 @@ function setActiveTile() {
             child.style.backgroundColor = "#1E52B4"
         }
     }
-    loadOrders();
+    clearOrders();
 }
 
-selectActiveSession()
+selectActiveSession();
 
 function selectActiveSession() {
     let sessions = document.querySelectorAll('.session');
@@ -111,6 +111,8 @@ function selectActiveSession() {
             session.addEventListener('click', e => {
                 activeSession = e.currentTarget.id;
                 setActiveTile();
+                loadOrders();
+                updateTrackingPannel();
             })
         }
     }
@@ -132,8 +134,8 @@ function addNewOrder() {
     let tip = orderRecieved - orderPrice;
     orders[orderKey] = {
         "orderName": orderName,
-        "orderPrice": orderPrice,
-        "orderRecieved": orderRecieved,
+        "orderPrice": Number.parseFloat(orderPrice),
+        "orderRecieved": Number.parseFloat(orderRecieved),
         "tip": tip
     }
     localStorage.setItem('storage', JSON.stringify(storage));
@@ -142,6 +144,7 @@ function addNewOrder() {
     orderInput.value = null;
     recievedInput.value = null;
     createOrderTile(orderKey);
+    updateTrackingPannel();
 }
 
 function createOrderTile(id) {
@@ -170,6 +173,28 @@ function clearOrders() {
             orderList.removeChild(child);
         }
     }
+}
+
+//Update totals
+function updateTrackingPannel() {
+    let activeOrders = storage[activeSession].orders
+    let tipTracker = document.getElementById('tip-tracker');
+    let totalTracker = document.getElementById('total-tracker');
+    let recievedTracker = document.getElementById('recieved-tracker');
+    let totalTips = 0;
+    let totalOrders = 0;
+    let totalRecieved = 0;
+    if (activeOrders != {}) {
+        for(order in activeOrders) {
+            order = activeOrders[order];
+            totalTips += order.tip;
+            totalOrders += order.orderPrice;
+            totalRecieved += order.orderRecieved;
+        }
+    }
+    tipTracker.innerHTML = makeMoney(totalTips);
+    totalTracker.innerHTML = makeMoney(totalOrders);
+    recievedTracker.innerHTML = makeMoney(totalRecieved);
 }
 
 // Formatting

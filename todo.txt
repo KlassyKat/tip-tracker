@@ -1,0 +1,7 @@
+[] Give session on first start
+
+[] Delete Sessions
+
+[] Delete Orders
+
+[] Fix add order css(gets cramped when phone keyboard comes up)
