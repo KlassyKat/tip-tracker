@@ -16,8 +16,9 @@ let storage = JSON.parse(localStorage.getItem('storage')) || {
     }
 };
 localStorage.setItem('storage', JSON.stringify(storage));
-let lastSession = Object.keys(storage).slice(-1);
+let lastSession = Object.keys(storage).slice(-1)[0];
 let activeSession = lastSession;
+let lastAddedSession = Object.keys(storage).slice(-1)[0];
 
 let sessionList = document.getElementById('sessions-list');
 let sessionTile = document.getElementById("session-placeholder");
@@ -69,7 +70,9 @@ function hideHamburgerMenu() {
 // New Sessions
 function addNewSession() {
     storage = JSON.parse(localStorage.getItem('storage'));
-    let sessionKey = 'session' + (Object.keys(storage).length + 1);
+    let sessionKey = 'session' + (parseInt(lastAddedSession.substring(7)) + 1);
+    lastAddedSession = sessionKey;
+    // let sessionKey = 'session' + (Object.keys(storage).length + 1);
     let timestampVal = makeTimestamp();
     storage[sessionKey] = {
         timestamp: timestampVal,
@@ -77,7 +80,7 @@ function addNewSession() {
     };
     localStorage.setItem('storage', JSON.stringify(storage));
     createSessionTile(sessionKey);
-    activeSession = Object.keys(storage).slice(-1);
+    activeSession = Object.keys(storage).slice(-1)[0];
     setActiveTile();
     updateTrackingPannel();
 }
@@ -88,6 +91,7 @@ function createSessionTile(id) {
     newSession.children[0].innerHTML = storage[id].timestamp;
     sessionTile.parentElement.children[0].after(newSession);
     selectActiveSession();
+    sessionAddCloseEvent();
 }
 
 function setActiveTile() {
@@ -116,6 +120,23 @@ function selectActiveSession() {
         }
     }
     updateTrackingPannel();
+}
+
+sessionAddCloseEvent();
+function sessionAddCloseEvent() {
+    for(child of sessionList.children) {
+        child.addEventListener('contextmenu', e => {
+            try {
+                sessionList.removeChild(e.currentTarget);
+            } catch {}
+            delete storage[e.currentTarget.id];
+            localStorage.setItem('storage', JSON.stringify(storage));
+            if(e.currentTarget.id == activeSession) {
+                activeSession = Object.keys(storage).slice(-1)[0];
+            }
+            setActiveTile();
+        })
+    }
 }
 
 
